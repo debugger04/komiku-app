@@ -1,0 +1,14 @@
+<ion-content>
+  <div style="margin-top: 150px" class="ion-margin-bottom">
+    <h2 class="ion-text-center">KOMIKU</h2>
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input placeholder="Username" name="username" [(ngModel)]="username"></ion-input>
+    </ion-item>
+    <ion-item class="ion-margin-bottom">
+      <ion-label>Password</ion-label>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-button expand="block" (click)="login()">Login</ion-button>
+  </div>
+</ion-content>

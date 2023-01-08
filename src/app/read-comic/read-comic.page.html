@@ -1,0 +1,121 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Komiku App</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list lines="none">
+      <ion-item routerLink="/home">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>&nbsp;&nbsp;Home</ion-label>
+      </ion-item>
+      <ion-item routerLink="/category">
+        <ion-icon name="list-outline"></ion-icon>
+        <ion-label>&nbsp;&nbsp;Kategori</ion-label>
+      </ion-item>
+      <ion-item routerLink="/my-favorite">
+        <ion-icon name="heart-outline"></ion-icon>
+        <ion-label>&nbsp;&nbsp;My Favorite</ion-label>
+      </ion-item>
+      <ion-item routerLink="/search-comic">
+        <ion-icon name="search-outline"></ion-icon>
+        <ion-label>&nbsp;&nbsp;Search</ion-label>
+      </ion-item>
+      <ion-item (click)="logout()">
+        <ion-icon name="search-outline"></ion-icon>
+        <ion-label>&nbsp;&nbsp;Logout</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Read</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-page" id="main-content"></div>
+  <div id="container">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-card>
+            <img alt="{{ pages.gambar1 }}" src="{{ pages.gambar1 }}" />
+          </ion-card>
+        </ion-col>
+        <ion-col size="12">
+          <ion-card>
+            <img alt="{{ pages.gambar2 }}" src="{{ pages.gambar2 }}" />
+          </ion-card>
+        </ion-col>
+        <ion-col size="12">
+          <ion-card>
+            <img alt="{{ pages.gambar3 }}" src="{{ pages.gambar3 }}" />
+          </ion-card>
+        </ion-col>
+        <ion-col size="12">
+          <ion-card>
+            <img alt="{{ pages.gambar4 }}" src="{{ pages.gambar4 }}" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-button expand="block" class="ion-margin" (click)="addFavorites()">
+      <ion-icon name="add-circle-outline"></ion-icon>
+      &nbsp;&nbsp;Add to favorites
+    </ion-button>
+    <div style="margin-top: 30px; margin-bottom: 30px;">
+      <ion-card>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4">
+              <ion-header>
+                <ion-card-title>
+                  Rate :
+                </ion-card-title>
+              </ion-header>
+            </ion-col>
+            <ion-col size="6">
+              <ion-item>
+                <ion-input type="number" name="rating" [(ngModel)]="rating"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="2">
+              <ion-button expand="block" (click)="addRating()">
+                <ion-icon name="send-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </div>
+    <div style="margin-bottom: 30px;">
+      <ion-label>Comment Section</ion-label>
+      <ion-card>
+        <ion-card-header class="ion-text-start">
+          <ion-label>Add comments</ion-label>
+        </ion-card-header>
+        <ion-input placeholder="Comments..." name="comment" [(ngModel)]="comment"></ion-input>
+        <ion-button expand="block" class="ion-margin" (click)="addComments()">
+          <ion-icon name="send-outline"></ion-icon>
+          &nbsp;&nbsp;Send
+        </ion-button>
+      </ion-card>
+    </div>
+    <div style="margin-bottom: 100px;">
+      <ion-label>Comments</ion-label>
+      <ion-card *ngFor="let comment of comments">
+        <ion-card-header class="ion-text-start">
+          <ion-card-subtitle style="color: white;">{{ comment.user_id }}</ion-card-subtitle>
+          <ion-card-subtitle>{{ comment.komentar }}</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
